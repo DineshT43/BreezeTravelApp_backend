@@ -22,7 +22,7 @@ connectDB();
 
 
 
-const PORT = 3500;
+const PORT = process.env.PORT || 3500;
 
 app.get("/", (req, res) => {
     res.send("Hello Geeks............");
@@ -38,7 +38,7 @@ app.use("/api/wishlist", wishlistRouter)
 
 mongoose.connection.once("open", () => {
     console.log("Connected to DB");
-    app.listen(process.env.PORT || PORT, () => {
+    app.listen(PORT, () => {
         console.log("Server is uP and running");
     })
 
